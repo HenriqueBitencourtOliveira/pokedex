@@ -14,7 +14,9 @@ export default function Home() {
           desvantagens e habilidades.
         </p>
 
-        <Link to="/pokedex"><button>Ver pokémons</button></Link>
+        <Link to="/pokedex">
+          <button>Ver pokémons</button>
+        </Link>
       </div>
       <div className="banner_img">
         <img src={banner} alt="" />

@@ -1,20 +1,10 @@
 // Em Pokedex.tsx
 import { useEffect, useState } from "react";
-import {
-  Button,
- 
-  Progress,
-} from "reactstrap";
-
-import Carousel from "../components/Carousel/Carousel";
+import { Button, Progress } from "reactstrap";
 import useCollection from "../models/useCollection";
-
 import ModalPokemons from "../components/Modal/Modal";
 import { DropdownSelect } from "../components/Dropdown/DropdownSelect";
 import PokemonCarousel from "../components/Carousel/Carousel";
-
-
-
 
 export default function Pokedex() {
   const {
@@ -24,7 +14,7 @@ export default function Pokedex() {
     selectedPokemon,
     setSelectedPokemon,
     fetchMorePokemon,
-   selectedType
+    selectedType,
   } = useCollection();
 
   const [searchValue, setSearchValue] = useState("");
@@ -55,8 +45,6 @@ export default function Pokedex() {
     }
   };
 
-
-
   return (
     <>
       <section className="pokemons">
@@ -81,8 +69,7 @@ export default function Pokedex() {
           <div className="search">
             <div className="search_">
               <ModalPokemons />
-           <DropdownSelect onSelectChange={handleSelectChange} />
-              
+              <DropdownSelect onSelectChange={handleSelectChange} />
             </div>
 
             <input
@@ -114,11 +101,7 @@ export default function Pokedex() {
                       className="progressP"
                     >
                       <p>{`${stat.stat.name}: ${stat.base_stat.toFixed(2)}`}</p>
-                      <Progress
-                        className="progress"
-                      
-                        value={stat.base_stat}
-                      />
+                      <Progress className="progress" value={stat.base_stat} />
                     </div>
                   ))}
                 </div>
@@ -127,7 +110,12 @@ export default function Pokedex() {
           )}
         </div>
         <div className="carrossel_pokemons">
-        <PokemonCarousel pokemons={pokemons} onSelect={handlePokemonSelect}  fetchMorePokemon={fetchMorePokemon} selectedType={selectedType}/>
+          <PokemonCarousel
+            pokemons={pokemons}
+            onSelect={handlePokemonSelect}
+            fetchMorePokemon={fetchMorePokemon}
+            selectedType={selectedType}
+          />
         </div>
       </section>
     </>

@@ -17,8 +17,12 @@ interface CarouselProps {
   selectedType: string | null; // Adicione esta propriedade se ainda não estiver presente
 }
 
-const PokemonCarousel: React.FC<CarouselProps> = ({ pokemons, onSelect, fetchMorePokemon, selectedType }) => {
-  
+const PokemonCarousel: React.FC<CarouselProps> = ({
+  pokemons,
+  onSelect,
+  fetchMorePokemon,
+  selectedType,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -26,11 +30,8 @@ const PokemonCarousel: React.FC<CarouselProps> = ({ pokemons, onSelect, fetchMor
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isSmall = useMediaQuery({ maxWidth: 1339 });
 
-
   // Define o número de pokemons por slide com base no tamanho da tela
   const itemsPerSlide = isMobile ? 2 : 5 && isSmall ? 3 : 5;
-
-
 
   const next = () => {
     if (animating) return;
@@ -81,7 +82,7 @@ const PokemonCarousel: React.FC<CarouselProps> = ({ pokemons, onSelect, fetchMor
             >
               <div className="img_poke">
                 <img
-                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
                   alt={`Imagem de ${pokemon.name}`}
                 />
               </div>
