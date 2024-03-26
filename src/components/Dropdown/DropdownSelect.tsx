@@ -32,7 +32,7 @@ export function DropdownSelect({ onSelectChange }: DropdownSelectProps) {
             >
               {type.name}{" "}
               <img
-                src={`src/img/${type.name}.svg`}
+                src={`/${type.name}.svg`}
                 alt={type.name}
                 style={{ width: "20px", height: "20px" }}
               />

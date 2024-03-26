@@ -57,7 +57,7 @@ export default function Pokedex() {
                     <>
                       <h2>{type.type.name}</h2>
                       <img
-                        src={`../img/${type.type.name}.svg`}
+                        src={`/${type.type.name}.svg`}
                         alt={type.type.name}
                         style={{ width: "20px", height: "20px" }}
                       />
