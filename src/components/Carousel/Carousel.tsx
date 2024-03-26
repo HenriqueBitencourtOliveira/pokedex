@@ -6,7 +6,6 @@ import {
   CarouselIndicators,
   CarouselCaption,
 } from "reactstrap";
-import useColletion from "../../models/useCollection";
 import { Pokemon } from "../../models/returnType";
 import { useMediaQuery } from "react-responsive";
 

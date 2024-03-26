@@ -153,10 +153,6 @@ export default function useCollection(): CollectionReturnType {
     }
   };
 
-  const generatePokemonImageUrl = (id: number) => {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-  };
-
   const handlePokemonSelect = (pokemon: Pokemon) => {
     setSelectedPokemon(pokemon);
   };
