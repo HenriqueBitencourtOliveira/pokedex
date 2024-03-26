@@ -180,8 +180,7 @@ export default function useCollection(): CollectionReturnType {
       return 140;
     }
   }
-  //console.log(pokemons);
-
+  
   return {
     nextPageUrl,
     data,
