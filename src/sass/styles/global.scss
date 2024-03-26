@@ -13,7 +13,6 @@
 .background_pokedex {
   background-color: $secondary-color;
   background-size: cover;
-  
 }
 .custom-navbar {
   box-shadow: 0px 10px 10px 0px #2121214d;
@@ -63,7 +62,7 @@
       border: 2px solid transparent;
       padding: 1rem;
       border-radius: 10px;
-
+      margin-bottom: 2rem;
       transition: 0.8s;
       font-size: 1.2rem;
       color: #212121;
@@ -80,7 +79,17 @@
     justify-content: flex-end;
     img {
       width: 90vh;
+      animation: moveUpDown 2s infinite alternate;
     }
+  }
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
   }
 }
 
@@ -102,6 +111,11 @@
     }
 
     .search {
+      .search_ {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+      }
       input {
         margin-top: 1rem;
         margin-right: 1rem;
@@ -110,8 +124,34 @@
         padding: 6px;
         width: 155px;
       }
-      button{
+      button {
         font-weight: 500;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      height: auto;
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+
+      .search {
+        margin-top: 1rem;
+
+        input {
+          width: 100%;
+          margin-right: 0;
+        }
+
+        button {
+          width: 100%;
+          margin-top: 0.5rem;
+        }
       }
     }
   }
@@ -120,15 +160,17 @@
     display: flex;
     padding: 2rem 4rem;
     justify-content: space-evenly;
-    gap: 6rem;
+    gap: 7rem;
 
     img {
       height: 200px;
       width: 200px;
     }
+
     h1 {
       font-weight: 400;
     }
+
     p {
       font-size: 1.2rem;
       font-weight: 300;
@@ -137,32 +179,59 @@
 
     .content_pokemon {
       width: 600px;
+
+      @media screen and (max-width: 768px) {
+        width: auto;
+      }
     }
 
     .progress_pokemon {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
+      gap: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .progress {
+        height: 7px;
+        width: 195px;
+      }
 
       p {
         margin-bottom: 0;
       }
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 0;
   }
 }
 
 .carousel {
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  width: 100%;
+  position: static !important;
   gap: 2.2rem;
+  justify-content: center;
   &::-webkit-scrollbar {
     display: none;
   }
+
   .poke {
     width: 150px;
     flex: none;
+    height: 200px;
     cursor: pointer;
     background-image: linear-gradient(
       to top,
@@ -176,10 +245,15 @@
 
     .img_poke img {
       width: 140px;
+      @media screen and (max-width: 768px) {
+        width: 100px;
+      }
     }
     .info_poke {
       height: 40px;
       display: flex;
+      margin-top: 0.7rem;
+      width: 100%;
       flex-direction: column;
       justify-content: space-between;
       text-align: center;
@@ -187,37 +261,49 @@
         font-weight: 500;
         color: $secondary-color;
       }
+      @media screen and (max-width: 768px) {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100px;
+      height: 150px;
     }
   }
 }
 .container {
   position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  .buttons {
-    text-align: center;
-    position: absolute;
-    display: flex;
-    top: 40%;
-    transform: translateY(-50%);
+  .carousel-indicators {
+    bottom: 56px !important;
+  }
 
-    button {
-      padding: 2rem;
-      background: none;
-      border: none;
+  .custom-carousel-controls {
+    .custom-carousel-control-prev {
+      position: absolute;
+      height: 60px;
+      top: 30%;
+    }
+
+    .custom-carousel-control-next {
+      position: absolute;
+      height: 60px;
+      top: 30%;
     }
   }
 }
-.left {
-  right: 30px;
-}
 
-.right {
-  right: -1450px;
+.carousel.slide {
+  flex-wrap: wrap;
 }
 
 .Btn_more {
   text-align: center;
-  padding-top: 3rem;
 
   .more {
     background-color: $buttonBg-color;
@@ -249,7 +335,7 @@
       margin-bottom: 1rem;
       margin-right: 1rem;
     }
-    button{
+    button {
       font-weight: 500;
     }
   }
@@ -271,7 +357,7 @@
       left: 35px;
     }
 
-    .name_first{
+    .name_first {
       background-color: $secondary-color;
       color: $text-color;
       padding: 0.85rem 1rem;
@@ -282,15 +368,13 @@
       position: relative;
       top: -10px;
       left: 50px;
-      img{
+      img {
         width: 100px;
         position: absolute;
         left: 5px;
         bottom: 2px;
-
       }
     }
-
 
     .pokeFront {
       position: absolute;
@@ -298,7 +382,7 @@
       right: 80px;
     }
 
-    .name_second{
+    .name_second {
       background-color: $secondary-color;
       color: $text-color;
       padding: 0.85rem 1rem;
@@ -309,12 +393,11 @@
       position: relative;
       top: -80px;
       left: 750px;
-      img{
+      img {
         width: 100px;
         position: absolute;
         left: 5px;
         bottom: 2px;
-
       }
     }
   }
@@ -359,6 +442,30 @@
       img {
         width: 40vh;
       }
+    }
+  }
+
+  .battle {
+    height: 450px !important;
+
+    .pokeFront {
+      top: 34% !important;
+      left: 200px !important;
+    }
+    .pokeBack {
+      top: 20% !important;
+      left: 10px !important;
+    }
+
+    .name_first {
+      font-size: 0.85rem !important;
+      left: -28px !important;
+      top: 360px !important;
+    }
+
+    .name_second {
+      left: 66px !important;
+      font-size: 0.85rem !important;
     }
   }
 }

@@ -1,19 +1,30 @@
 // Em Pokedex.tsx
 import { useEffect, useState } from "react";
-import { Button, Progress } from "reactstrap";
+import {
+  Button,
+ 
+  Progress,
+} from "reactstrap";
 
 import Carousel from "../components/Carousel/Carousel";
 import useCollection from "../models/useCollection";
 
 import ModalPokemons from "../components/Modal/Modal";
+import { DropdownSelect } from "../components/Dropdown/DropdownSelect";
+import PokemonCarousel from "../components/Carousel/Carousel";
+
+
+
 
 export default function Pokedex() {
   const {
-    generatePokemonImageUrlGif,
     pokemons,
     handlePokemonSelect,
+    handleSelectChange,
     selectedPokemon,
     setSelectedPokemon,
+    fetchMorePokemon,
+   selectedType
   } = useCollection();
 
   const [searchValue, setSearchValue] = useState("");
@@ -44,6 +55,8 @@ export default function Pokedex() {
     }
   };
 
+
+
   return (
     <>
       <section className="pokemons">
@@ -52,17 +65,26 @@ export default function Pokedex() {
             {selectedPokemon &&
               selectedPokemon.types.map((type, index) => (
                 <span className="typePoke" key={index}>
-                  <h2>{type.type.name}</h2>
-                  <img
-                    src={`src/img/${type.type.name}.svg`}
-                    alt={type.type.name}
-                    style={{ width: "20px", height: "20px" }}
-                  />
+                  {
+                    <>
+                      <h2>{type.type.name}</h2>
+                      <img
+                        src={`src/img/${type.type.name}.svg`}
+                        alt={type.type.name}
+                        style={{ width: "20px", height: "20px" }}
+                      />
+                    </>
+                  }
                 </span>
               ))}
           </h2>
           <div className="search">
-            <ModalPokemons />
+            <div className="search_">
+              <ModalPokemons />
+           <DropdownSelect onSelectChange={handleSelectChange} />
+              
+            </div>
+
             <input
               type="text"
               value={searchValue}
@@ -80,7 +102,7 @@ export default function Pokedex() {
           {selectedPokemon && (
             <>
               <img
-                src={generatePokemonImageUrlGif(selectedPokemon.id)}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${selectedPokemon.id}.gif`}
                 alt=""
               />
               <div className="content_pokemon">
@@ -93,11 +115,8 @@ export default function Pokedex() {
                     >
                       <p>{`${stat.stat.name}: ${stat.base_stat.toFixed(2)}`}</p>
                       <Progress
-                        className=""
-                        style={{
-                          height: "4px",
-                          width: "200px",
-                        }}
+                        className="progress"
+                      
                         value={stat.base_stat}
                       />
                     </div>
@@ -107,7 +126,9 @@ export default function Pokedex() {
             </>
           )}
         </div>
-        <Carousel onSelect={handlePokemonSelect} />
+        <div className="carrossel_pokemons">
+        <PokemonCarousel pokemons={pokemons} onSelect={handlePokemonSelect}  fetchMorePokemon={fetchMorePokemon} selectedType={selectedType}/>
+        </div>
       </section>
     </>
   );

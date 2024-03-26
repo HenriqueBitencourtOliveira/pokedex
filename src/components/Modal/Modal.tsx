@@ -7,15 +7,15 @@ import {
   ModalFooter,
   
 } from "reactstrap";
-import useCollection, { Pokemon } from "../../models/useCollection";
+import useCollection from "../../models/useCollection";
 import life from "/life.png"
+import { Pokemon } from "../../models/returnType";
+import { useMediaQuery } from "react-responsive";
 
 
 function ModalPokemons(props: any) {
   const { className } = props;
   const {
-    generatePokemonImageUrlGif,
-    generatePokemonImageUrlGifBack,
     calculatePokemonWidthBack,
     calculatePokemonWidthFront,
   } = useCollection();
@@ -41,20 +41,22 @@ function ModalPokemons(props: any) {
       }
       const data = await response.json();
 
-      // Se o primeiro Pokémon ainda não foi definido, defina-o
       if (!firstPokemon) {
         setFirstPokemon(data);
       } else {
-        // Se o segundo Pokémon ainda não foi definido, defina-o
+       
         if (!secondPokemon) {
           setSecondPokemon(data);
         }
       }
     } catch (error) {
       console.error("Error searching Pokémon:", error);
-      // Tratar erro aqui
+
     }
   };
+
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
 
   const handleClearSearch = () => {
     setSearchValue("");
@@ -65,7 +67,7 @@ function ModalPokemons(props: any) {
   return (
     <div>
       <Button color="danger" onClick={toggleModal}>
-        Open Comparison
+      Simulator
       </Button>
 
       <Modal
@@ -94,11 +96,11 @@ function ModalPokemons(props: any) {
               <>
                <p className="name_first"> {firstPokemon.name} <img src={life} alt="" /></p>
                 <img
-                  src={generatePokemonImageUrlGifBack(firstPokemon.id)}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${firstPokemon.id}.gif`}
                   alt=""
                   className="pokeBack"
                   style={{
-                    width: `${calculatePokemonWidthBack(firstPokemon)}`,
+                    width: `${isMobile ? calculatePokemonWidthBack(firstPokemon) * 0.6 : calculatePokemonWidthBack(firstPokemon)}px`,
                   }}
                 />
 
@@ -108,11 +110,11 @@ function ModalPokemons(props: any) {
               <>
                <p className="name_second"> {secondPokemon.name} <img src={life} alt="" /></p>
                 <img
-                  src={generatePokemonImageUrlGif(secondPokemon.id)}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${secondPokemon.id}.gif`}
                   alt=""
                   className="pokeFront"
                   style={{
-                    width: `${calculatePokemonWidthFront(secondPokemon)}`,
+                    width: `${isMobile ? calculatePokemonWidthFront(secondPokemon) * 0.6 : calculatePokemonWidthFront(secondPokemon)}px`,
                   }}
                 />
               </>
