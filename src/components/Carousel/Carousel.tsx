@@ -138,7 +138,7 @@ const PokemonCarousel: React.FC<CarouselProps> = ({
           onClick={() => fetchMorePokemon(selectedType || undefined)}
           className="more"
         >
-          More pokemons
+          Mais pokemons
         </button>
       </div>
     </div>

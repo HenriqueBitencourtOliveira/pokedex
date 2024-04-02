@@ -20,7 +20,7 @@ export function DropdownSelect({ onSelectChange }: DropdownSelectProps) {
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret color="primary">
-        Types
+        Tipos
       </DropdownToggle>
       <DropdownMenu>
         {types &&

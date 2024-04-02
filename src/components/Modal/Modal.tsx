@@ -54,7 +54,7 @@ function ModalPokemons(props: any) {
   return (
     <div>
       <Button color="danger" onClick={toggleModal}>
-        Simulator
+        Simulador
       </Button>
 
       <Modal
@@ -64,7 +64,7 @@ function ModalPokemons(props: any) {
         size="xl"
       >
         <ModalHeader className="custom-header" toggle={toggleModal}>
-          Search for a Pokémon
+          Escolha os pokemons
         </ModalHeader>
         <ModalBody className="custom-body">
           <div className="body-search">
@@ -74,7 +74,7 @@ function ModalPokemons(props: any) {
               onChange={handleSearchInputChange}
             />
             <Button color="primary" onClick={handleSearchSubmit}>
-              Search
+              Buscar
             </Button>
           </div>
 
@@ -123,10 +123,10 @@ function ModalPokemons(props: any) {
         </ModalBody>
         <ModalFooter className="custom-footer">
           <Button color="secondary" onClick={handleClearSearch}>
-            Clear
+            Limpar
           </Button>
           <Button color="secondary" onClick={toggleModal}>
-            Cancel
+            Cancelar
           </Button>
         </ModalFooter>
       </Modal>

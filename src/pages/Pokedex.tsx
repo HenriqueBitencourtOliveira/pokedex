@@ -76,10 +76,10 @@ export default function Pokedex() {
               type="text"
               value={searchValue}
               onChange={handleSearchInputChange}
-              placeholder="Name or Number"
+              placeholder="Nome ou Número"
             />
             <Button color="primary" onClick={handleSearchSubmit}>
-              Search
+              Buscar
             </Button>
           </div>
         </div>
