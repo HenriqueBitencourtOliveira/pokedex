@@ -133,12 +133,7 @@ export default function useCollection(): CollectionReturnType {
       console.error("Error fetching Pokemon:", error);
     }
   };
-  
-  console.log(pokemons);
-  
-  
-
-
+ 
   const handleLeftClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (carousel.current) {

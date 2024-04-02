@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Example from "../components/Navbar/Navbar";
+import NavBar from "../components/Navbar/Navbar";
 
 export default function RootLayout() {
   const { pathname } = useLocation();
@@ -10,7 +10,7 @@ export default function RootLayout() {
         pathname === "/pokedex" ? "background_pokedex" : ""
       }`}
     >
-      <Example />
+      <NavBar />
 
       <main>
         <Outlet />

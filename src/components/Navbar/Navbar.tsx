@@ -12,7 +12,7 @@ import {
 
 import imgPokemon from "/pokemon.svg";
 
-const Example = () => {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
   const toggle = () => setIsOpen(!isOpen);
@@ -53,4 +53,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default NavBar;

@@ -16,11 +16,11 @@ export function DropdownSelect({ onSelectChange }: DropdownSelectProps) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  console.log(onSelectChange);
+
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret color="primary">
-        Tipos
+        Types
       </DropdownToggle>
       <DropdownMenu>
         {types &&
