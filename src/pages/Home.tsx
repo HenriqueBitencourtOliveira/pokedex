@@ -10,8 +10,7 @@ export default function Home() {
         </h2>
 
         <p>
-          Você pode conhecer vários tipos de Pokémons, seus pontos fortes,
-          desvantagens e habilidades.
+          Você pode conhecer vários tipos de Pokémons e seus pontos fortes.
         </p>
 
         <Link to="/pokedex">
